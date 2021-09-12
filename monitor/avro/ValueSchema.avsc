@@ -1,0 +1,15 @@
+{
+  "namespace": "miso.clinical.serialization.avro",
+  "type": "record",
+  "name": "MonitorMessage",
+  "fields": [
+    {
+      "name": "timestamp",
+      "type": "string"
+    },
+    {
+      "name": "transaction_id",
+      "type": "string"
+    }
+  ]
+}
