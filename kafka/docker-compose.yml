@@ -86,24 +86,6 @@ services:
         /etc/confluent/docker/run & 
         #
         sleep infinity
-  ksqldb:
-    image: confluentinc/ksqldb-server:0.15.0
-    hostname: ksqldb
-    container_name: ksqldb
-    depends_on:
-      - broker
-      - kafka-connect
-    ports:
-      - "8088:8088"
-    environment:
-      KSQL_LISTENERS: http://0.0.0.0:8088
-      KSQL_BOOTSTRAP_SERVERS: broker:29092
-      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
-      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
-      KSQL_KSQL_CONNECT_URL: http://kafka-connect:8083
-      KSQL_KSQL_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-      KSQL_KSQL_SERVICE_ID: confluent_rmoff_01
-      KSQL_KSQL_HIDDEN_TOPICS: '^_.*'
   mysql:
     # *-----------------------------*
     # To connect to the DB: 
@@ -119,13 +101,3 @@ services:
      - MYSQL_PASSWORD=asgard
     volumes:
      - ./data/mysql:/docker-entrypoint-initdb.d/
-
-  kafkacat:
-    image: edenhill/kafkacat:1.6.0
-    container_name: kafkacat
-    entrypoint: 
-      - /bin/sh 
-      - -c 
-      - |
-        apk add jq; 
-        while [ 1 -eq 1 ];do sleep 60;done
