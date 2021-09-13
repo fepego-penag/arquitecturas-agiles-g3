@@ -64,6 +64,7 @@ Para configurar el monitor es necesario ubicarse en el directorio ```monitor``` 
 
 ### Configuracion kafka-connect
 A continuación vamos a configurar el connector para enviar la informacion a nuestra base de datos, para ello ejecutamos la ejecucion del siguiente contrto de servicio 
+NOTA: !se debe realizar en la raíz del cliente de kafka.
 
 ```
 curl --location --request PUT 'http://localhost:8083/connectors/sink-jdbc-mysql-01/config' \
@@ -71,7 +72,7 @@ curl --location --request PUT 'http://localhost:8083/connectors/sink-jdbc-mysql-
 --data-raw '{
     "connector.class"                    : "io.confluent.connect.jdbc.JdbcSinkConnector",
     "connection.url"                     : "jdbc:mysql://mysql:3306/poc_clinical_monitor",
-    "topics"                             : "monitor_control",
+    "topics"                             : "monitor_control, microservices_health",
     "key.converter"                      : "org.apache.kafka.connect.storage.StringConverter",
     "value.converter"                    : "io.confluent.connect.avro.AvroConverter",
     "value.converter.schema.registry.url": "http://schema-registry:8081",
