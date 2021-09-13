@@ -33,7 +33,7 @@ class Consumer(threading.Thread):
 
     def run(self):
         c = AvroConsumer(
-        {'bootstrap.servers': boostrap_servers, 'group.id': 'monitor-2', 'schema.registry.url': schema_registry_url,
+        {'bootstrap.servers': boostrap_servers, 'group.id': 'agenda-4', 'schema.registry.url': schema_registry_url,
         "api.version.request": True})
         c.subscribe([topic_monitor_control])
 
