@@ -25,15 +25,15 @@ class Consumer(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
         self.stop_event = threading.Event()
-        self.value_schema = avro.load('avro/ValueSchemaFact.avsc')
-        self.key_schema = avro.load('avro/KeySchemaFact.avsc')
+        self.value_schema = avro.load('avro/ValueSchemaPaciente.avsc')
+        self.key_schema = avro.load('avro/KeySchemaPaciente.avsc')
 
     def stop(self):
         self.stop_event.set()
 
     def run(self):
         c = AvroConsumer(
-        {'bootstrap.servers': boostrap_servers, 'group.id': 'monitor-2', 'schema.registry.url': schema_registry_url,
+        {'bootstrap.servers': boostrap_servers, 'group.id': 'paciente-5', 'schema.registry.url': schema_registry_url,
         "api.version.request": True})
         c.subscribe([topic_monitor_control])
 
