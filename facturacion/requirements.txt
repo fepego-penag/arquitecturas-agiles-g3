@@ -1,0 +1,6 @@
+schedule==1.1.0
+kafka-python==2.0.2
+pymongo==3.12.0
+requests
+certifi
+confluent-kafka[avro,json,protobuf]>=1.4.2
