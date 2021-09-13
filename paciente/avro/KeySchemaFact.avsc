@@ -1,0 +1,5 @@
+{
+  "namespace": "miso.clinical.serialization.avro",
+  "type": "string",
+  "name": "key"
+}
